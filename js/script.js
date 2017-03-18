@@ -14,7 +14,7 @@ window.onload = loadScript;
 function initialize() {  
     var mapOptions = {
         zoom: 14,
-        center: new google.maps.LatLng(38.896952, -77.029713),
+        center: new google.maps.LatLng(28.644800, 77.216721),
         mapTypeControl: false,
         disableDefaultUI: true
     };
@@ -67,117 +67,73 @@ function setAllMap() {
 //Provides information for the markers
 var markers = [
     {   
-    title: "The Thomas Jefferson Memorial",
-    lat: 38.881004, 
-    lng: -77.036463,
-    streetAddress: "701 East Basin SW",
-    cityAddress: "Washington, DC 20242",
-    url: "www.nps.gov/thje/index.htm",
+    title: "Lotus Temple",
+    lat: 28.553558  , 
+    lng: 77.259132,
+    streetAddress: "Lotus Temple, Kalkaji",
+    cityAddress: "New Delhi, Delhi, India",
+    url: "http://www.bahaihouseofworship.in/",
     id: "nav0",
     visible: ko.observable(true),
     boolTest: true
     },
     {   
-    title: "The Lincoln Memorial",
+    title: "Qutab Minar",
     lat: 38.889269, 
     lng: -77.050176,
-    streetAddress: "2 Lincoln Memorial Cir",
-    cityAddress: "Washington, DC 20037",
-    url: "www.nps.gov/linc/index.htm",
+    streetAddress: "Mehrauli",
+    cityAddress: "New Delhi, Delhi 110030",
+    url: "http://www.delhitourism.gov.in/delhitourism/tourist_place/qutab_minar.jsp",
     id: "nav1",
     visible: ko.observable(true),
     boolTest: true
     },
     {   
-    title: "The Washington Monument",
-    lat: 38.889484, 
-    lng: -77.0363733,
-    streetAddress: "2 15th St NW",
-    cityAddress: "Washington, DC 20007",
-    url: "www.nps.gov/wamo/index.htm",
+    title: "Red Fort, Lal Qila",
+    lat: 28.656473, 
+    lng: 77.242943,
+    streetAddress: " Red Fort, Lal Qila, Chandni Chowk",
+    cityAddress: "New Delhi, Delhi, India",
+    url: "http://asi.nic.in/asi_monu_tktd_delhi_redfort.asp",
     id: "nav2",
     visible: ko.observable(true),
     boolTest: true
     },
     {   
-    title: "The United States Capital",
-    lat: 38.889939, 
-    lng: -77.00905,
-    streetAddress: "East Capitol St NE & First St SE",
-    cityAddress: "Washington, DC 20004",
-    url: "www.visitthecapitol.gov",
+    title: "Indira Gandhi International Airport (DEL)",
+    lat: 28.556160, 
+    lng: 77.100281,
+    streetAddress: "Indira Gandhi International Airport (DEL)",
+    cityAddress: "New Delhi, Delhi, India",
+    url: "http://www.newdelhiairport.in/",
     id: "nav3",
     visible: ko.observable(true),
     boolTest: true
     },
     {
-    title: "The White House",
-    lat: 38.8989013, 
-    lng: -77.0324048,
-    streetAddress: "1600 Pennsylvania Ave NW SW",
-    cityAddress: "Washington, DC 20500",
+    title: "Jamia Millia Islamia",
+    lat: 28.561657, 
+    lng: 77.281258,
+    streetAddress: "Jamia Millia Islamia, Zakir Nagar Okhla",
+    cityAddress: "New Delhi, Delhi, India",
     url: "www.whitehouse.gov",
     id: "nav4",
     visible: ko.observable(true),
     boolTest: true
-    },
-    {   
-    title: "The National WWII Memorial",
-    lat: 38.889443, 
-    lng: -77.040556,
-    streetAddress: "1750 Independence Ave SW",
-    cityAddress: "Washington, DC 20006",
-    url: "www.wwiimemorial.com/",
-    id: "nav5",
-    visible: ko.observable(true),
-    boolTest: true
-    },
-    {
-    title: "National Gallery of Art",
-    lat: 38.890575, 
-    lng: -77.019764,
-    streetAddress: "6th & Constitution Ave NW",
-    cityAddress: "Washington, DC 20565",
-    url: "www.nga.gov/content/ngaweb.html",
-    id: "nav6",
-    visible: ko.observable(true),
-    boolTest: true
-    },
-    {
-    title: "Smithsonian National Museum of Natural History",
-    lat: 38.890505, 
-    lng: -77.026031,
-    streetAddress: "10th St. & Constitution Ave. NW",
-    cityAddress: "Washington, DC 20560",
-    url: "www.mnh.si.edu",
-    id: "nav7",
-    visible: ko.observable(true),
-    boolTest: true
-    },
-    {
-    title: "Arts and Industries Building",
-    lat: 38.888771, 
-    lng: -77.024374,
-    streetAddress: "900 Jefferson Dr SW",
-    cityAddress: "Washington, DC 20560",
-    url: "www.si.edu/Museums/arts-and-industries-building",
-    id: "nav8",
-    visible: ko.observable(true),
-    boolTest: true
-    }   
+    }  
 ];
 
 //Get Google Street View Image for each inidividual marker
     //Passed lat and lng to get each image location
     //Had to pass title for whitehouse & different lat and lng to get images
     //for White House and Capitol
-var headingImageView = [5, 235, 55, 170, 190, 240, -10, 10, 190];     
+var headingImageView = [5, 235, 55, 170, 190];     
 var streetViewImage;
 var streetViewUrl = 'https://maps.googleapis.com/maps/api/streetview?size=180x90&location=';
 
 function determineImage() {
     if (i === 3) {
-        streetViewImage = streetViewUrl + '38.892052,-77.008888&fov=75&heading=' + headingImageView[i] + '&pitch=10';                 
+        streetViewImage = streetViewUrl + '28.592140,77.046051&fov=75&heading=' + headingImageView[i] + '&pitch=10';                 
     } else if (i === 4) {
         streetViewImage = streetViewUrl +
                         markers[i].streetAddress + ',' + markers[i].cityAddress +
@@ -381,7 +337,7 @@ weatherContainer.click(function() {
 //GET Weather Underground JSON
     //Append Weather forecast for Washington DC to .forecast
     //If error on GET JSON, display message
-var weatherUgUrl = "http://api.wunderground.com/api/8b2bf4a9a6f86794/conditions/q/DC/Washington.json";
+var weatherUgUrl = "http://api.wunderground.com/api/ac87f7366f7f0349/conditions/q/DC/Washington.json";
 
 $.getJSON(weatherUgUrl, function(data) {
     var list = $(".forecast ul");
